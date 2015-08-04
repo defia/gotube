@@ -25,6 +25,7 @@ func NewClient() *Client {
 	}}
 }
 
+//get video's raw info
 func (c *Client) GetRawInfo(url string) (*VideoRawInfo, error) {
 	resp, err := c.Get(url)
 	if err != nil {
@@ -39,6 +40,7 @@ func (c *Client) GetRawInfo(url string) (*VideoRawInfo, error) {
 	return GenerateVideoInfo(b)
 }
 
+//get info for common format
 func (c *Client) GetInfo(url string) (*VideoInfo, error) {
 	resp, err := c.Get(url)
 	if err != nil {
