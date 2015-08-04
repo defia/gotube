@@ -25,6 +25,7 @@ func main() {
 	url := *u
 	if url == "" {
 		flag.Usage()
+		fmt.Println()
 		fmt.Println("You can also set `http_proxy` enviroment variable to download by proxy")
 		return
 	}
@@ -59,7 +60,7 @@ func main() {
 	if *fn == "" {
 		filename = info.Title + "." + info.AvailableDownloadInfo[selection].FileExtension
 	} else {
-		filename = *fn + info.AvailableDownloadInfo[selection].FileExtension
+		filename = *fn + "." + info.AvailableDownloadInfo[selection].FileExtension
 	}
 	download(client, info.AvailableDownloadInfo[selection].Url, filename)
 
