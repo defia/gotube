@@ -17,11 +17,17 @@ import (
 //var ch = make(chan bool, 5)
 
 func main() {
-	u := flag.String("u", "https://www.youtube.com/watch?v=QS7lN7giXXc", "youtube url")
-	fn := flag.String("f", "", "download filename")
+	u := flag.String("u", "", "youtube url")
+	fn := flag.String("f", "", "override download filename, default is video's title")
+
 	flag.Parse()
 
 	url := *u
+	if url == "" {
+		flag.Usage()
+		fmt.Println("You can also set `http_proxy` enviroment variable to download by proxy")
+		return
+	}
 	url = strings.Replace(url, `https://`, `http://`, -1)
 
 	client := gotube.NewClient()

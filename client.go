@@ -51,7 +51,6 @@ func (c *Client) GetInfo(url string) (*VideoInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Println("read finished")
 	v, err := GenerateVideoInfo(b)
 	if err != nil {
 		return nil, err
