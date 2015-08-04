@@ -105,7 +105,10 @@ func mycopy(dst io.Writer, src io.Reader, total int64) {
 	}()
 	defer func() {
 		stop = true
+		bar.Set(s)
+		bar.Update()
 		if int64(s) == total {
+
 			bar.FinishPrint("Finished!")
 		} else {
 			bar.FinishPrint("something wrong!")
