@@ -1,4 +1,1 @@
-# gotube
-youtube video downloader written in golang
-
-See main\main.go for usage
+# **deprecated, you can use idm/eagleget to easily download youtube video**
