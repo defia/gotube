@@ -1,6 +1,9 @@
 package gotube
 
-import "errors"
+import (
+	"errors"
+	"log"
+)
 
 type VideoRawInfo struct {
 	Title          string
@@ -37,16 +40,17 @@ var (
 func GenerateVideoInfo(b []byte) (*VideoRawInfo, error) {
 	title, err := parseTitle(b)
 	if err != nil {
-		return nil, err
+		log.Println(err)
 	}
 	fmt1, err := parseAdaptivefmts(b)
 	if err != nil {
-		return nil, err
+		log.Println(err)
+
 	}
 
 	fmt2, err := parsefmtstreamap(b)
 	if err != nil {
-		return nil, err
+		log.Println(err)
 	}
 	return &VideoRawInfo{
 		Title:          title,

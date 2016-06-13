@@ -31,6 +31,9 @@ var (
 )
 
 func toMaps(b []byte) []KV {
+	if b == nil {
+		return nil
+	}
 	list := bytes.Split(b, bytesComma)
 	result := make([]KV, len(list))
 	for i, v := range list {
